@@ -5,12 +5,37 @@
 <?import javafx.scene.layout.VBox?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.collections.FXCollections?>
+<?import java.lang.String?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.text.Text?>
+<?import javafx.scene.layout.HBox?>
 <VBox alignment="CENTER" spacing="20.0" xmlns:fx="http://javafx.com/fxml"
       fx:controller="io.github.jentgent.autosfz.MainController">
     <padding>
         <Insets bottom="20.0" left="20.0" right="20.0" top="20.0"/>
     </padding>
 
-    <Label fx:id="welcomeText"/>
+    <VBox alignment="CENTER">
+        <Label text="Pitch detection algorithm:"/>
+        <ComboBox fx:id="pitchAlgo">
+            <items>
+                <FXCollections fx:factory="observableArrayList">
+                    <!--                <String fx:value="YIN"/>-->
+                    <String fx:value="MPM"/>
+                    <!--                <String fx:value="FFT_YIN"/>-->
+                    <String fx:value="DYNAMIC_WAVELET"/>
+                    <!--                <String fx:value="FFT_PITCH"/>-->
+                    <String fx:value="AMDF"/>
+                </FXCollections>
+            </items>
+            <value>
+                <String fx:value="MPM"/>
+            </value>
+        </ComboBox>
+    </VBox>
+    <CheckBox fx:id="correctPitch">Exact Pitch</CheckBox>
     <Button text="Load Samples" onAction="#onSampleLoadButtonClick"/>
+    <Text fx:id="outputText">Load a sample folder to start</Text>
 </VBox>
